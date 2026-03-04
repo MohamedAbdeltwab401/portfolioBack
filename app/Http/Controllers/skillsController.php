@@ -14,7 +14,7 @@ class skillsController extends Controller
     return view("skills.index", ["skills" => $skills]);
   }
   public function createSkills() {
-    return view("skills");
+    return view("skills.create");
   }
 
   public function store(Request $request) {
