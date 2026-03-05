@@ -9,6 +9,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test-smtp', function () {
+    $connection = @fsockopen('smtp.gmail.com', 587, $errno, $errstr, 10);
+    if ($connection) {
+        fclose($connection);
+        return 'Port 587 OPEN ✅';
+    }
+    return "Port 587 BLOCKED ❌ Error: $errstr ($errno)";
+});
+
 Route::get("index", [projectController::class, "index"]);
 Route::get("createProject", [projectController::class, "create"]);
 Route::post("storeProject", [projectController::class, "store"]);
