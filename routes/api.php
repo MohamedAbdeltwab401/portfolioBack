@@ -11,6 +11,15 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::get('/mail-test', function () {
+    Mail::raw('Test Email', function ($message) {
+        $message->to('midosaed62@gmail.com')
+                ->subject('Test');
+    });
+
+    return "Mail Sent";
+});
+
 Route::get('showSkills', [skillsController::class, 'show']);
 Route::get('showProjects', [projectController::class, 'show']);
 Route::post('contact', [ContactController::class, 'send']);
