@@ -11,14 +11,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-$resend = Resend::client('re_ZAypxAzE_PnmCrxsAGHSxJqa2GgZJhY4x');
 
-$resend->emails->send([
-  'from' => 'onboarding@resend.dev',
-  'to' => 'midosaed62@gmail.com',
-  'subject' => 'Hello World',
-  'html' => '<p>Congrats on sending your <strong>first email</strong>!</p>'
-]);
 
 Route::get('showSkills', [skillsController::class, 'show']);
 Route::get('showProjects', [projectController::class, 'show']);
