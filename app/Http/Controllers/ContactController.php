@@ -24,16 +24,16 @@ public function send(Request $request)
     ]);
 }
 
-public function recieve(Request $request) {
-        $data = $request->validate([
-        'name' => 'required',
-        'email' => 'required|email',
-        'message' => 'required'
-    ]);
-    Mail::to(config('mail.portfolio_owner'))->send(new ContactMail($data));
-    return response()->json([
-        'status' => true,
-        'message' => 'Email sent successfully'
-    ]);
-}
+// public function recieve(Request $request) {
+//         $data = $request->validate([
+//         'name' => 'required',
+//         'email' => 'required|email',
+//         'message' => 'required'
+//     ]);
+//     Mail::to($request->email)->send(new ContactMail($data));
+//     return response()->json([
+//         'status' => true,
+//         'message' => 'Email sent successfully'
+//     ]);
+// }
 }
