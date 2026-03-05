@@ -17,7 +17,7 @@ public function send(Request $request)
         'message' => 'required'
     ]);
 
-    Mail::to($request->email)->queue(new ContactMail($data));
+    Mail::to($request->email)->send(new ContactMail($data));
     return response()->json([
         'status' => true,
         'message' => 'Email sent successfully'
@@ -30,7 +30,7 @@ public function recieve(Request $request) {
         'email' => 'required|email',
         'message' => 'required'
     ]);
-    Mail::to($request->email)->queue(new ContactMail($data));
+    Mail::to($request->email)->send(new ContactMail($data));
     return response()->json([
         'status' => true,
         'message' => 'Email sent successfully'
